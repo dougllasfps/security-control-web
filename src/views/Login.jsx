@@ -44,8 +44,8 @@ export default class Login extends React.Component{
 
                     <div className="row">
                         <div className="col-xs-8">
-                            <div className="checkbox icheck">
-                                
+                            <div>
+                                <input type="checkbox" /> Lembrar
                             </div>
                         </div>
                         <div className="col-xs-4">

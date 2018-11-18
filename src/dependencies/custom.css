@@ -16,3 +16,7 @@ button {
 .table-actions {
   width: 150px;
 }
+
+.pointer{
+  cursor: pointer;
+}

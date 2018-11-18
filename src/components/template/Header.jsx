@@ -5,7 +5,7 @@ export default props => (
         <a href="/" className="logo">
             <span className="logo-mini">App</span>
             <span className="logo-lg">
-                <i className="fa fa-home"></i><b>  AppTitle</b>
+                <i className="fa  fa-github-alt"></i><b>  AppTitle</b>
             </span>
         </a>
         <nav className="navbar navbar-static-top">
