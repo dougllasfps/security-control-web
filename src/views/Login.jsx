@@ -1,23 +1,10 @@
 import React from 'react'
+import Form from '../components/common/Form'
 
 export default class Login extends React.Component{
 
-    state = {
-        formValues: {
-            username: '',
-            password: ''
-        }        
-    }
-
-    onSubmit(event){
-       console.log(this.state.formValues)
-       event.preventDefault(); 
-    }
-
-    onChange = (event) => {
-        let name = event.target.name
-        let value = event.target.value
-        this.setState({...this.state, formValues: {...this.state.formValues, [name]: value}})
+    onSubmit(values){
+       console.log(values)
     }
 
     render(){
@@ -30,15 +17,15 @@ export default class Login extends React.Component{
             <div className="login-box-body">
                 <p className="login-box-msg">Entre para inicializar sua sessão</p>
 
-                <form method="post" onSubmit={e => this.onSubmit(e)}>
+                <Form method="post" onSubmit={this.onSubmit}>
 
                     <div className="form-group has-feedback">
-                        <input value={this.state.username} type="text" className="form-control" placeholder="Login ou Email" name="username" onChange={(e) => this.onChange(e)} />
+                        <input  type="text" className="form-control" placeholder="Login ou Email" name="username" />
                         <span className="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
 
                     <div className="form-group has-feedback">
-                        <input value={this.state.password} type="password" className="form-control" placeholder="Senha" name="password" onChange={(e) => this.onChange(e)}/>
+                        <input type="password" className="form-control" placeholder="Senha" name="password"/>
                         <span className="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
 
@@ -53,7 +40,7 @@ export default class Login extends React.Component{
                         </div>
                     </div>
 
-                </form>
+                </Form>
             </div>
         </div>
         )
