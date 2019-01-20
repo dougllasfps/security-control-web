@@ -13,4 +13,8 @@ import 'admin-lte/dist/css/AdminLTE.min.css'
 import 'admin-lte/dist/css/skins/_all-skins.min.css'
 import 'admin-lte/plugins/iCheck/flat/blue.css'
 
+import 'primereact/resources/themes/rhea/theme.css';
+import 'primereact/resources/primereact.min.css';
+
+
 import './custom.css'

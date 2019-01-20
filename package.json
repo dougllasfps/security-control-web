@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "final-form": "^4.11.0",
+    "primereact": "^3.0.0-rc.1",
     "react": "16.6.3",
     "react-dom": "16.6.3",
     "react-final-form": "^4.0.2",
