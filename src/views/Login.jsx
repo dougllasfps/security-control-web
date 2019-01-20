@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from '../components/common/Form'
+import {DefaultForm as Form} from '../components/common/Form'
 
 export default class Login extends React.Component{
 

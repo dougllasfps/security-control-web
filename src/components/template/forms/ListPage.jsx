@@ -3,8 +3,9 @@ import DefaultPage from '../DefaultPage'
 import {Row, Col} from 'reactstrap'
 import {DefaultForm as Form} from '../../common/Form'
 import Button from '../../common/Button'
+import DataTable from '../../common/DataTable';
 
-class FormPage extends Component{
+class ListPage extends Component{
     render(){
         let customButtons = this.props.customButtons;
 
@@ -14,12 +15,8 @@ class FormPage extends Component{
                     <Col md="12">
                         <Button type="submit" 
                                 color="default" 
-                                icon={this.props.submitIcon || 'save'} 
-                                label={this.props.submitLabel || 'Salvar'} />
-                        <Button color="primary" 
-                                icon="mail-reply"
-                                label="Voltar"
-                                onClick={this.props.voltar}/>
+                                icon={this.props.findIcon || 'search'} 
+                                label={this.props.findLabel || 'Consultar'} />
                     </Col>
                 </Row>                
             ) 
@@ -31,9 +28,11 @@ class FormPage extends Component{
                     {this.props.children}
                     {customButtons}
                 </Form>
+                <br />
+                <DataTable />
             </DefaultPage>
         )
     }
 }
 
-export default FormPage
+export default ListPage

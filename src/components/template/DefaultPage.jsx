@@ -3,8 +3,6 @@ import Box from './fragments/Box'
 import ContentHeader from './fragments/ContentHeader'
 import Content from './fragments/Content'
 
-import {Row, Col, Button} from 'reactstrap'
-
 class DefaultPage extends Component{
     render(){
         return(

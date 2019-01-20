@@ -1,10 +1,8 @@
 import React from 'react'
 
 import FormPage from '../../components/template/forms/FormPage'
-import {Row, Col, FormGroup, Input, Button, Label, InputGroup} from 'reactstrap'
+import {Row, Col, FormGroup, Label, InputGroup} from 'reactstrap'
 import {InputText} from '../../components/common/Inputs'
-import {Field} from 'react-final-form'
-import Form from '../../components/common/Form'
 
 export default class Formulario extends React.Component{
 
@@ -16,8 +14,11 @@ export default class Formulario extends React.Component{
         return(
             <FormPage title="Formulário" 
                         small="Registros de Formulário"   
-                        header="Cadastro">
-                <Form onSubmit={this.submit}>
+                        header="Cadastro"
+                        onSubmit={this.submit}
+                        submitLabel="Atualizar"
+                        submitIcon="refresh" 
+                        >
                     <Row>
                         <Col md="12">
                         <FormGroup>
@@ -26,7 +27,7 @@ export default class Formulario extends React.Component{
                                 <span className="input-group-addon">
                                     <i className="fa fa-envelope"></i>
                                 </span>
-                                <InputText rendered={false} type="text" name="email" placeholder="Email" />
+                                <InputText type="text" name="email" placeholder="Email" />
                             </InputGroup>
                             </FormGroup>
                         </Col>
@@ -47,13 +48,7 @@ export default class Formulario extends React.Component{
                             </FormGroup>
                         </Col>
                     </Row>            
-                    <Row>
-                        <Col md="12">
-                            <Button type="submit" color="default"><i className="fa fa-save"></i>  Save</Button>
-                            <Button color="danger">Cancel</Button>
-                        </Col>
-                    </Row>         
-                </Form>
+       
             </FormPage>
         )
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Form} from 'react-final-form'
 
-export default class DefaultForm extends React.Component{
+export class DefaultForm extends React.Component{
 
     onSubmit = (event) => {
          if(this.props.onSubmit){

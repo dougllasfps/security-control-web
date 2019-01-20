@@ -12,4 +12,4 @@ export class InputText extends Component{
             <Field component={InputTextAdapter} {...this.props} />
         )
     }
-}
+}   
