@@ -17,7 +17,7 @@ export default class Login extends React.Component{
             <div className="login-box-body">
                 <p className="login-box-msg">Entre para inicializar sua sessão</p>
 
-                <Form method="post" onSubmit={this.onSubmit}>
+                <Form onSubmit={this.onSubmit}>
 
                     <div className="form-group has-feedback">
                         <input  type="text" className="form-control" placeholder="Login ou Email" name="username" />
