@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Header from '../components/template/Header'
-import SideBar from '../components/template/SideBar'
-import Footer from '../components/template/Footer'
-import Rotas from './Rotas'
+import Header from 'components/template/Header'
+import SideBar from 'components/template/SideBar'
+import Footer from 'components/template/Footer'
+import Rotas from '@/app/routes/Rotas'
 
-import '../dependencies/dependences'
+import '@/dependencies/dependences'
 
 class App extends Component {
   render() {

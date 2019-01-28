@@ -22,7 +22,7 @@ class ListPage extends Component{
                 </Row>                
             ) 
         }
-
+        
         const cars = [
             { vin: 'test', year: 2018, brand: 'teste', color: 'color' },
             { vin: 'test', year: 2018, brand: 'teste', color: 'color' },
