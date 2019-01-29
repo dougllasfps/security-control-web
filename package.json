@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "admin-lte": "2.3.11",
+    "axios": "^0.18.0",
     "final-form": "^4.11.0",
     "font-awesome": "4.7.0",
     "ionicons": "^3.0.0",

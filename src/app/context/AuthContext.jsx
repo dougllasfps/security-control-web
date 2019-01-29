@@ -1,6 +1,6 @@
 import React, { Component, createContext } from 'react'
 
-import axios from 'axios'
+import ApiClientService from '../service/ApiClientService';
 
 const context = createContext()
 
@@ -13,8 +13,7 @@ const LOGGED_USER_TOKEN = '_logged_user_btoken';
 class AuthContextProvider extends Component{
 
     state = {
-        authenticated : false,
-        token: ''
+        authenticated : false
     }
     
     login = (user, token) => {
@@ -30,13 +29,13 @@ class AuthContextProvider extends Component{
     }
 
     validateSession = () => {
-        const token = localStorage.getItem( LOGGED_USER_TOKEN )
+        let token = localStorage.getItem( LOGGED_USER_TOKEN ) || null
         
-        if( token ){
-
+        if( token && this.props.verifyToken ){
+            return this.props.verifyToken(token)
         }
 
-        return {token}
+        return false
     }
 
     componentDidMount(){
@@ -45,6 +44,7 @@ class AuthContextProvider extends Component{
        if(!token){
             this.logout()
        }else{
+            ApiClientService.setToken(token)
             this.login( token, user )
        }
     }
@@ -53,7 +53,8 @@ class AuthContextProvider extends Component{
         return(
             <AuthProvider value={{
                 login: this.login,
-                logout: this.logout
+                logout: this.logout,
+                authenticated: this.state.authenticated
             }}>
                 {this.props.children}
             </AuthProvider>
