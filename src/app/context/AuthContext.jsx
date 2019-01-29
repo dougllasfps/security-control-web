@@ -1,33 +1,52 @@
 import React, { Component, createContext } from 'react'
 
+import axios from 'axios'
+
 const context = createContext()
 
 export const AuthConsumer = context.Consumer;
 const AuthProvider = context.Provider
 
 const LOGGED_USER = '_logged_user';
+const LOGGED_USER_TOKEN = '_logged_user_btoken';
 
 class AuthContextProvider extends Component{
 
     state = {
-        authenticated : false
+        authenticated : false,
+        token: ''
     }
     
-    login = (user) => {
+    login = (user, token) => {
         localStorage.setItem( LOGGED_USER, JSON.stringify(user) );
-        this.setState({ ...this.state ,authenticated: true})
+        localStorage.setItem( LOGGED_USER_TOKEN, token );
+        this.setState({ ...this.state, authenticated: true, token})
     }
 
     logout = () => {
         localStorage.removeItem(LOGGED_USER)
-        this.setState({ ...this.state ,authenticated: false})
+        localStorage.removeItem(LOGGED_USER_TOKEN)
+        this.setState({ ...this.state, authenticated: false})
+    }
+
+    validateSession = () => {
+        const token = localStorage.getItem( LOGGED_USER_TOKEN )
+        
+        if( token ){
+
+        }
+
+        return {token}
     }
 
     componentDidMount(){
-        const loggedUser = localStorage.getItem(JSON.parse(LOGGED_USER) )
-        if(loggedUser){
-            this.setState({ ...this.state ,authenticated: true})
-        }
+       const { token, user } = this.validateSession()
+
+       if(!token){
+            this.logout()
+       }else{
+            this.login( token, user )
+       }
     }
         
     render(){
@@ -36,8 +55,10 @@ class AuthContextProvider extends Component{
                 login: this.login,
                 logout: this.logout
             }}>
-
+                {this.props.children}
             </AuthProvider>
         )
     }
 }
+
+export default AuthContextProvider

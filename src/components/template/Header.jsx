@@ -1,5 +1,5 @@
 import React from 'react'
-import userLogo from '../../images/user-silluete.png'
+import userLogo from '@/dependencies/images/user-silluete.png'
 
 export default props => (
     <header className="main-header">
