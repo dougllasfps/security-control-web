@@ -7,11 +7,11 @@ import { AuthConsumer } from '@/app/context/AuthContext'
 import withConsumer from '@/app/decorators/withConsumer'
 import Login from '@/views/Login'
 
-import '@/dependencies/dependences'
+import '@/components/template/dependencies'
 
 class App extends Component {
   render() {
-    if(this.props.authenticated){
+    if(this.props.authenticated || true){
       return (
         <div className="wrapper">
             <Header />

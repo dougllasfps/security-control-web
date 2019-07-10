@@ -4,7 +4,7 @@ import App from '@/app/App';
 import AuthContextProvider from '@/app/context/AuthContext'
 
 ReactDOM.render( 
-    <AuthContextProvider>
+    <AuthContextProvider verifyToken={() => ({token: '', user: ''})}>
         <App />
     </AuthContextProvider> , 
     document.getElementById('root') 

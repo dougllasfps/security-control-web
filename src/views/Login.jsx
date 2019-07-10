@@ -3,6 +3,10 @@ import {DefaultForm as Form} from '../components/common/Form'
 
 export default class Login extends React.Component{
 
+    state = {
+
+    }
+
     onSubmit(values){
        console.log(values)
     }
