@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '@/app/App';
-import AuthContextProvider from '@/app/context/AuthContext'
+import { Provider } from 'mobx-react'
+import stores from './store'
 
 ReactDOM.render( 
-    <AuthContextProvider verifyToken={() => ({token: '', user: ''})}>
+    <Provider {...stores}>
         <App />
-    </AuthContextProvider> , 
+    </Provider> , 
     document.getElementById('root') 
 );

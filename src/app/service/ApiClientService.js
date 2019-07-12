@@ -1,4 +1,4 @@
-import axios from './axios'
+import axios from '../config/axios'
 
 export default class ApiClientService{
 
@@ -7,7 +7,7 @@ export default class ApiClientService{
     }
 
     get = async (query) => {
-        return await axios.get(`${this.apiUrl}${query}`)
+        return axios.get(`${this.apiUrl}${query}`)
     }
 
     post = async (object) => {
@@ -16,11 +16,11 @@ export default class ApiClientService{
 
     put = async (object) => {
         const {id} = object
-        return await axios.put(`${this.apiUrl}/${id}`, object)
+        return axios.put(`${this.apiUrl}/${id}`, object)
     }
 
     delete = async (id) => {
-        return await axios.delete(`${this.apiUrl}/${id}`)
+        return axios.delete(`${this.apiUrl}/${id}`)
     }
 
     static setToken( token ){

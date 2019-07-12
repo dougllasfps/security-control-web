@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import DefaultPage from '../DefaultPage'
 import {Row, Col} from 'reactstrap'
-import {DefaultForm as Form} from '../../common/Form'
 import Button from '../../common/Button'
 
 class FormPage extends Component{
@@ -27,10 +26,10 @@ class FormPage extends Component{
 
         return(
             <DefaultPage {...this.props}>
-                <Form onSubmit={this.props.onSubmit}>
+                <form onSubmit={this.props.onSubmit}>
                     {this.props.children}
                     {customButtons}
-                </Form>
+                </form>
             </DefaultPage>
         )
     }

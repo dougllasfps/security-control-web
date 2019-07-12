@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true
+    },
+    "paths": {
+        "@/*": ["./src/*"]
+    },
+    "allowSyntheticDefaultImports": true
+}

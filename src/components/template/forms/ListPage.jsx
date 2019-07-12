@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import DefaultPage from '../DefaultPage'
 import {Row, Col} from 'reactstrap'
-import {DefaultForm as Form} from '../../common/Form'
 import Button from '../../common/Button'
 import {DataTable} from 'primereact/datatable';
 import {Column} from 'primereact/column';
@@ -44,10 +43,10 @@ class ListPage extends Component{
 
         return(
             <DefaultPage {...this.props}>
-                <Form onSubmit={this.props.onSubmit}>
+                <form onSubmit={this.props.onSubmit}>
                     {this.props.children}
                     {customButtons}
-                </Form>
+                </form>
                 <br />
                 <DataTable rows="10" value={cars} responsive={true} paginator>
                     <Column field="vin" header="Vin" />

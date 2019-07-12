@@ -1,35 +1,41 @@
 import React from 'react'
-import {DefaultForm as Form} from '../components/common/Form'
+import { observer, inject } from 'mobx-react';
 
-export default class Login extends React.Component{
+@inject("auth")
+@observer
+class Login extends React.Component{
 
     state = {
-
+        username: '',
+        password: ''
     }
 
-    onSubmit(values){
-       console.log(values)
+    onSubmit = (e) => {
+       e.preventDefault();
+       this.props.auth.authenticate({...this.state})
     }
 
     render(){
         return(
             <div className="login-box">
             <div className="login-logo">
-                <b>My App</b>
+                <b>Application</b>
             </div>
             
             <div className="login-box-body">
                 <p className="login-box-msg">Entre para inicializar sua sessão</p>
 
-                <Form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit}>
 
                     <div className="form-group has-feedback">
-                        <input  type="text" className="form-control" placeholder="Login ou Email" name="username" />
+                        <input  type="text" className="form-control" placeholder="Login ou Email" name="username" 
+                                value={this.state.username} onChange={e => this.setState({username: e.target.value})} />
                         <span className="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
 
                     <div className="form-group has-feedback">
-                        <input type="password" className="form-control" placeholder="Senha" name="password"/>
+                        <input type="password" className="form-control" placeholder="Senha" name="password"
+                               value={this.state.password} onChange={e => this.setState({password: e.target.value})} />
                         <span className="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
 
@@ -44,9 +50,11 @@ export default class Login extends React.Component{
                         </div>
                     </div>
 
-                </Form>
+                </form>
             </div>
         </div>
         )
     }
 }
+
+export default Login

@@ -2,7 +2,7 @@ import React from 'react'
 
 import FormPage from '@/components/template/forms/FormPage'
 import {Row, Col, FormGroup, Label, InputGroup} from 'reactstrap'
-import {InputText} from '@/components/common/Inputs'
+import {InputText} from 'primereact/inputtext'
 
 export default class Formulario extends React.Component{
 

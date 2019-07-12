@@ -8,6 +8,12 @@ module.exports = override(
                 rootPathPrefix: '@',
                 rootPathSuffix: 'src'
             }
-        ]
+        ],
+        [   
+            '@babel/plugin-proposal-decorators',
+            {   
+              legacy: true,
+            },  
+          ]
     )
 )
