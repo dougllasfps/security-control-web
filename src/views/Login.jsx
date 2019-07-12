@@ -1,6 +1,5 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react';
-import AuthService from '../app/service/authService';
 
 @inject("auth")
 @observer
@@ -13,7 +12,6 @@ class Login extends React.Component{
 
     constructor(){
         super()
-        this.authService = new AuthService();
     }
 
     onSubmit = async (e) => {
