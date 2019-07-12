@@ -1,5 +1,6 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react';
+import AuthService from '../app/service/authService';
 
 @inject("auth")
 @observer
@@ -10,9 +11,18 @@ class Login extends React.Component{
         password: ''
     }
 
-    onSubmit = (e) => {
+    constructor(){
+        super()
+        this.authService = new AuthService();
+    }
+
+    onSubmit = async (e) => {
        e.preventDefault();
-       this.props.auth.authenticate({...this.state})
+       try{
+            this.props.auth.login({...this.state})           
+       }catch(error){
+            console.log(error)
+       }
     }
 
     render(){

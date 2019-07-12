@@ -6,20 +6,20 @@ export default class ApiClientService{
         this.apiUrl = apiUrl;
     }
 
-    get = async (query) => {
+    get = (query) => {
         return axios.get(`${this.apiUrl}${query}`)
     }
 
-    post = async (object) => {
-        return await axios.post(this.apiUrl, object)
+    post = (object) => {
+        return axios.post(this.apiUrl, object)
     }
 
-    put = async (object) => {
+    put = (object) => {
         const {id} = object
         return axios.put(`${this.apiUrl}/${id}`, object)
     }
 
-    delete = async (id) => {
+    delete = (id) => {
         return axios.delete(`${this.apiUrl}/${id}`)
     }
 
