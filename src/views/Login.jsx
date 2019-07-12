@@ -10,10 +10,6 @@ class Login extends React.Component{
         password: ''
     }
 
-    constructor(){
-        super()
-    }
-
     onSubmit = async (e) => {
        e.preventDefault();
        this.props.auth.login({...this.state})           
