@@ -18,11 +18,7 @@ class Login extends React.Component{
 
     onSubmit = async (e) => {
        e.preventDefault();
-       try{
-            this.props.auth.login({...this.state})           
-       }catch(error){
-            console.log(error)
-       }
+       this.props.auth.login({...this.state})           
     }
 
     render(){

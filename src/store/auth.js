@@ -4,7 +4,7 @@ import Messages from '../components/common/messages';
 import ApiClientService from '../app/service/ApiClientService';
 
 class AuthStore {
-
+    
     authService = new AuthService();
     @observable sessionUser = null;
 

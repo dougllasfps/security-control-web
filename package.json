@@ -7,6 +7,7 @@
     "axios": "^0.18.0",
     "font-awesome": "4.7.0",
     "ionicons": "^3.0.0",
+    "jest": "23.6.0",
     "jquery": "2.2.3",
     "mobx": "5.10.1",
     "mobx-react": "^6.1.1",
@@ -22,7 +23,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test test",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

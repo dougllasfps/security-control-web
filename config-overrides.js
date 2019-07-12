@@ -12,8 +12,9 @@ module.exports = override(
         [   
             '@babel/plugin-proposal-decorators',
             {   
-              legacy: true,
+                legacy: true,
             },  
-          ]
+        ]
     )
 )
+
