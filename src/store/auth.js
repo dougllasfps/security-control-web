@@ -1,14 +1,13 @@
-import { observable, action } from 'mobx'
+import { observable, action, decorate } from 'mobx'
 import AuthService from '../app/service/authService';
 import Messages from '../components/common/messages';
 import ApiClientService from '../app/service/ApiClientService';
 
-class AuthStore {
+export class AuthStore {
     
     authService = new AuthService();
-    @observable sessionUser = null;
+    sessionUser = null;
 
-    @action
     login = async ( credentials ) =>{
         try{
             const response = await this.authService.auth(credentials)
@@ -22,12 +21,17 @@ class AuthStore {
        }        
     }
 
-    @action 
     logout = () => {
         this.sessionUser = null;
-        ApiClientService.setToken(null)
+        ApiClientService.removeToken();
     }
 }
+
+decorate(AuthStore, {
+    sessionUser: observable,
+    login: action,
+    logout: action
+})
 
 const instance = new AuthStore();
 export default instance;

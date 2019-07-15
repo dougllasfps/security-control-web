@@ -24,6 +24,14 @@ export default class ApiClientService{
     }
 
     static setToken( token ){
-        axios.default.headers.commom['Authorization'] = `Bearer ${token}`
+        try{
+            axios.default.headers.commom['Authorization'] = `Bearer ${token}`
+        }catch(error){}
+    }
+
+    static removeToken(){
+        try{
+            axios.default.headers.commom['Authorization'] = null
+        }catch(error){}
     }
 }

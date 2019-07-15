@@ -13,7 +13,7 @@ class Header extends React.Component{
                 <a href="/" className="logo">
                     <span className="logo-mini">{props.appMini || 'App'}</span>
                     <span className="logo-lg">
-                        <i className={`fa fa-${props.logo ||'github-alt'}`}></i><b>  {props.appTitle || 'AppTitle'}</b>
+                        <i className={`fa fa-${props.logo ||'android'}`}></i><b>  {props.appTitle || 'Application'}</b>
                     </span>
                 </a>
                 <nav className="navbar navbar-static-top">
@@ -98,13 +98,13 @@ class Header extends React.Component{
                     <li className="dropdown user user-menu">
                         <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                         <img src={userLogo} className="user-image" alt="User Image" />
-                        <span className="hidden-xs">{props.auth.sessionUser.username}</span>
+                        <span className="hidden-xs">{props.auth.sessionUser.name}</span>
                         </a>
                         <ul className="dropdown-menu">
                         <li className="user-header">
                             <img src={userLogo} alt="User Image" />
                             <p>
-                           {props.auth.sessionUser.username}
+                           {props.auth.sessionUser.name}
                             <small>Member since Nov. 2012</small>
                             </p>
                         </li>
@@ -123,10 +123,10 @@ class Header extends React.Component{
                         </li>
                         <li className="user-footer">
                             <div className="pull-left">
-                            <a href="#" className="btn btn-default btn-flat">Profile</a>
+                            <a href="#" className="btn btn-default btn-flat">Perfil</a>
                             </div>
                             <div className="pull-right">
-                            <a href="#" className="btn btn-default btn-flat">Sign out</a>
+                            <a onClick={ e => this.props.auth.logout()} href="#" className="btn btn-default btn-flat">Sair</a>
                             </div>
                         </li>
                         </ul>
