@@ -5,11 +5,26 @@ import MenuTree from './fragments/MenuTree'
 
 export default props => (
     <ul className="sidebar-menu">
-        <MenuItem path="/" label="Inicio" icon="home" />
-        <MenuItem path="#/login" label="Login Example" icon="users" />
-        <MenuTree label="Cadastro" icon="edit">
-            <MenuItem path="#/form" label="Form Example" icon="usd" />
-            <MenuItem path="#/list" label="List Example" icon="reorder" />
+        <MenuItem path="#/" label="Inicio" icon="home" />
+
+        <MenuTree label="Users" icon="users">
+            <MenuItem path="#/form" label="Insert New" icon="plus" />
+            <MenuItem path="#/list" label="Search" icon="search" />
+        </MenuTree>
+
+        <MenuTree label="Modules" icon="desktop">
+            <MenuItem path="#/form" label="Insert New" icon="plus" />
+            <MenuItem path="#/list" label="Search" icon="search" />
+        </MenuTree>
+
+        <MenuTree label="Authorities" icon="lock">
+            <MenuItem path="#/form" label="Insert New" icon="plus" />
+            <MenuItem path="#/list" label="Search" icon="search" />
+        </MenuTree>
+
+        <MenuTree label="Roles" icon="user-circle">
+            <MenuItem path="#/form" label="Insert New" icon="plus" />
+            <MenuItem path="#/list" label="Search" icon="search" />
         </MenuTree>
     </ul>
 )

@@ -12,7 +12,7 @@ export class AuthStore {
         try{
             const response = await this.authService.auth(credentials)
             const { user, token } = response.data
-            this.sessionUser = user     
+            this.setSessionUser(user)     
             ApiClientService.setToken(token)
        }catch(error){
            if(error.response){
@@ -22,15 +22,18 @@ export class AuthStore {
     }
 
     logout = () => {
-        this.sessionUser = null;
         ApiClientService.removeToken();
+        this.setSessionUser(null)     
+    }
+
+    setSessionUser = (user) => {
+        this.sessionUser = user;
     }
 }
 
 decorate(AuthStore, {
     sessionUser: observable,
-    login: action,
-    logout: action
+    setSessionUser: action
 })
 
 const instance = new AuthStore();
