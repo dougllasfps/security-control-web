@@ -104,23 +104,14 @@ class Header extends React.Component{
                         <li className="user-header">
                             <img src={userLogo} alt="User Image" />
                             <p>
-                           {props.auth.sessionUser.name}
-                            <small>Member since Nov. 2012</small>
+                           {props.auth.sessionUser.name}<br />
+                           <small>
+                            {props.auth.sessionUser.email}
+                           </small>
+                            <small>Member since {props.auth.sessionUser.sinceDate}</small>
                             </p>
                         </li>
-                        <li className="user-body">
-                            <div className="row">
-                            <div className="col-xs-4 text-center">
-                                <a href="#">Followers</a>
-                            </div>
-                            <div className="col-xs-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div className="col-xs-4 text-center">
-                                <a href="#">Friends</a>
-                            </div>
-                            </div>
-                        </li>
+
                         <li className="user-footer">
                             <div className="pull-left">
                             <a href="#" className="btn btn-default btn-flat">Perfil</a>

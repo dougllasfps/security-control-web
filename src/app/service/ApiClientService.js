@@ -1,4 +1,4 @@
-import axios from '../config/axios'
+import  {http, applyToken , removeToken as removeHttpToken} from '../config/axios'
 
 export default class ApiClientService{
 
@@ -7,31 +7,32 @@ export default class ApiClientService{
     }
 
     get = (query) => {
-        return axios.get(`${this.apiUrl}${query}`)
+        return http.get(`${this.apiUrl}${query}`)
     }
 
     post = (object) => {
-        return axios.post(this.apiUrl, object)
+        return http.post(this.apiUrl, object)
     }
 
     put = (object) => {
         const {id} = object
-        return axios.put(`${this.apiUrl}/${id}`, object)
+        return http.put(`${this.apiUrl}/${id}`, object)
     }
 
     delete = (id) => {
-        return axios.delete(`${this.apiUrl}/${id}`)
+        return http.delete(`${this.apiUrl}/${id}`)
     }
 
     static setToken( token ){
         try{
-            axios.default.headers.commom['Authorization'] = `Bearer ${token}`
+            applyToken(token)
         }catch(error){}
     }
 
     static removeToken(){
         try{
-            axios.default.headers.commom['Authorization'] = null
+            removeHttpToken()
         }catch(error){}
     }
+
 }

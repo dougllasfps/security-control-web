@@ -9,7 +9,7 @@ class DefaultPage extends Component{
             <Fragment>
                 <ContentHeader title={this.props.title} small={this.props.small} />
                 <Content>
-                    <Box title={this.props.header} color={this.props.color}>
+                    <Box title={this.props.header} color={this.props.color || 'primary'}>
                         {this.props.children}
                     </Box>
                 </Content>

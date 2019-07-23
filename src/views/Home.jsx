@@ -14,15 +14,16 @@ function Home (){
                         <DashBoardBox title="Users" count={100} icon="users"/>
                     </div>
                     <div className="col-md-3">
-                        <DashBoardBox title="Modules" count={50} severity="success" icon="desktop" />
+                        <DashBoardBox title="Modules" count={50} severity="green" icon="desktop" />
                     </div>
                     <div className="col-md-3">
-                        <DashBoardBox title="Roles" count={210} severity="warning" icon="user-circle"  />
+                        <DashBoardBox title="Roles" count={210} severity="yellow" icon="user-circle"  />
                     </div>
                     <div className="col-md-3">
-                        <DashBoardBox title="Authorities" count={6530} severity="danger" icon="lock" />
+                        <DashBoardBox title="Authorities" count={6530} severity="red" icon="lock" />
                     </div>
                 </div>
+  
             </Content>
         </div>
     )

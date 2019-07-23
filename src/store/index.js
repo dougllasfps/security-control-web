@@ -1,7 +1,9 @@
 import auth from './auth'
+import modules from './modules'
 
 const stores = {
-    auth
+    auth,
+    modules
 }
 
 export default stores;

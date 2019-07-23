@@ -33,6 +33,10 @@ export default class Messages {
     }
 
     static warn( message){
-        this.add('warn', message)
+        this.add('warning', message)
+    }
+
+    static info( message){
+        this.add('info', message)
     }
 }
