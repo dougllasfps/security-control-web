@@ -42,6 +42,7 @@ function ModuleList({
                 <div className="col-md-12">
                     <DataTable value={modules.list}>
                         <Column field="name" header="Name" />
+                        <Column field="label" header="Label" />
                     </DataTable>
                 </div>
             </Row>

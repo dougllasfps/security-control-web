@@ -16,13 +16,15 @@ class ModuleStore{
         this.list = newList;
     }
 
-    save = (module) => {
+    save = async (module) => {
         try{
-            this.service.save(module)
+            await this.service.save(module)
             Messages.success('Module saved succesfully!')
         }catch(error){
-            if(error.response){
-                Messages.error(error.response.data.message)
+            if(error.response.data && Array.isArray(error.response.data)){
+                error.response.data.forEach(element => {
+                    Messages.error(element)
+                });
             }
         }
     }
