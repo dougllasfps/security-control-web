@@ -37,11 +37,25 @@ class ModuleStore {
             this.setModule(data)
             Messages.success('Module saved succesfully!')
         }catch(error){
-            if(error.response.data && Array.isArray(error.response.data)){
-                error.response.data.forEach(element => {
-                    Messages.error(element)
-                });
-            }
+            this.service.handleError(error)
+        }
+    }
+
+    delete = async (id) => {
+        try{
+            await this.service.delete(id)
+            Messages.success('Module deleted succesfully!')
+        }catch(error){
+            this.service.handleError(error)
+        }
+    }
+
+    load = async (id) => {
+        try{
+            const {data} = await this.service.findById(id)
+            this.setModule(data)
+        }catch(error){
+            this.service.handleError(error)
         }
     }
 
@@ -50,11 +64,7 @@ class ModuleStore {
             await this.service.update(module)
             Messages.success('Module updated succesfully!')
         }catch(error){
-            if(error.response.data && Array.isArray(error.response.data)){
-                error.response.data.forEach(element => {
-                    Messages.error(element)
-                });
-            }
+            this.service.handleError(error)
         }
     }
 
@@ -66,9 +76,7 @@ class ModuleStore {
                 Messages.warn('No result found')
             }
         }catch(error){
-            if(error.response){
-                Messages.error(error.response.data.message)
-            }
+            this.service..handleError(error)
         }
     }
 }

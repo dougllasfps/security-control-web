@@ -6,6 +6,10 @@ export default class ModuleService extends ApiClientService{
         super('/api/modules');
     }
 
+    findById = id => {
+        return this.get(`/${id}`)
+    }
+
     find = name =>{
         return this.get(`?name=${name}`);
     }

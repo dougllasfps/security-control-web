@@ -1,24 +1,7 @@
 import { AuthStore } from '../../store/auth'
-import AuthService from '../../app/service/authService';
+import axios from 'axios'
 
-jest.mock('../../app/service/authService')
-
-AuthService.mockImplementation(() => {
-    return{
-        auth: () => {
-            return { 
-                data:{
-                    user : {
-                        name: 'foo bar',
-                        username: 'foo',
-                        email: 'foo@bar.com'
-                    },
-                    token: 'foo'
-                }                
-            }
-        }
-    }
-})
+jest.mock('axios')
 
 describe('auth store tests', () => {
 
@@ -26,18 +9,18 @@ describe('auth store tests', () => {
     const user = {username: 'foo', password: 'bar'};
 
     it('should login', () => {
+        const resp = {
+            token: 'foo',
+            user
+        }
+        axios.post.mockResolvedValue(resp)
         store.login(user)
-        expect(store.sessionUser).toBeTruthy();
+        expect(store.sessionUser).toBe(resp)
     })
 
     it('should logout', () => {
         store.logout();
         expect(store.sessionUser).toBeFalsy();
     })
-
-    it('should throw error on fail', () => {
-        expect( () => store.login({}) ).toThrowError('')
-    })
-
 
 })
