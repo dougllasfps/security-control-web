@@ -1,40 +1,47 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 import DefaultPage from '../../components/template/DefaultPage';
+import { toJS } from 'mobx'
 import { inject, observer } from 'mobx-react';
 import FormGroup from '../../components/common/formGroup';
 import Row from '../../components/common/row';
 
-function ModuleForm({
-    modules
-}) {
+function ModuleForm({ modules }) {
     
-    const entity = {modules}
-    const [name, setName] = useState('')
-    const [label, setLabel] = useState('')
+    const { module } = modules
 
-    const submitIcon = `fa fa-${entity && entity.id ? 'refresh' : 'save'}`
-    const submitLabel = `${entity && entity.id ? 'Update' : 'Save'}`
+    console.log('render module form ')
+    console.log(toJS(module))
+
+    const submitIcon = `fa fa-${module && module.id ? 'refresh' : 'save'}`
+    const submitLabel = `${module && module.id ? 'Update' : 'Save'}`
 
     const onSubmit = (e) => {
         e.preventDefault();
-        modules.save({
-            id: ( entity && entity.id ) || null,
-            name,
-            label
-        })
+        if(module.id){
+            modules.update(module)
+        }else{
+            modules.save(module)
+        }
     }
 
-
     return(
-        <DefaultPage title="Modules" header="New">
+        <DefaultPage title="Modules" header={module.id ? `Updating ${module.id}` : "New"}>
             <form onSubmit={onSubmit}>
                 <Row>
                     <FormGroup id="name" colsSize={6} label="Name: *">
-                        <input type="text" className="form-control" value={entity.name  || name } onChange={e => setName(e.target.value)} />
+                        <input type="text" 
+                               name="name" 
+                               className="form-control" 
+                               value={module.name} 
+                               onChange={e => modules.setName(e.target.value)} />
                     </FormGroup>
                     <FormGroup id="label" colsSize={6} label="Label: *">
-                        <input type="text"  className="form-control" value={entity.label  || label } onChange={e => setLabel(e.target.value)} />
+                        <input type="text" 
+                               name="label" 
+                               className="form-control" 
+                               value={module.label} 
+                               onChange={e => modules.setLabel(e.target.value)} />
                     </FormGroup>
                 </Row>
                 <Row>

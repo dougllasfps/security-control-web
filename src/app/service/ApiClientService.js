@@ -1,4 +1,5 @@
 import  {http, applyToken , removeToken as removeHttpToken} from '../config/axios'
+import Messages from '../../components/common/messages';
 
 export default class ApiClientService{
 
@@ -21,6 +22,14 @@ export default class ApiClientService{
 
     delete = (id) => {
         return http.delete(`${this.apiUrl}/${id}`)
+    }
+
+    handleError = (error) => {
+        if(error.response.data && Array.isArray(error.response.data)){
+            error.response.data.forEach(element => {
+                Messages.error(element)
+            });
+        }
     }
 
     static setToken( token ){

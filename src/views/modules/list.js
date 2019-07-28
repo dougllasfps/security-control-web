@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import DefaultPage from '../../components/template/DefaultPage';
 import { inject, observer } from 'mobx-react';
 import { DataTable } from 'primereact/datatable'
@@ -6,11 +6,13 @@ import {Column} from 'primereact/column';
 import FormGroup from '../../components/common/formGroup';
 import Row from '../../components/common/row';
 
+function ModuleList({ modules }){
 
-function ModuleList({
-    modules
-}){
     const [name, setName] = useState('')
+
+    useEffect(() => {
+        modules.init();
+    },[])
 
     const executeFind = (e) => {
         e.preventDefault();
@@ -41,12 +43,12 @@ function ModuleList({
             <Row>
                 <div className="col-md-12">
                     <DataTable value={modules.list}>
+                        <Column field="id" header="Id" />
                         <Column field="name" header="Name" />
                         <Column field="label" header="Label" />
                     </DataTable>
                 </div>
             </Row>
-
 
         </DefaultPage>
     )
