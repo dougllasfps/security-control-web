@@ -1,26 +1,28 @@
 import { decorate, observable, action } from "mobx";
 import ModuleService from "../app/service/moduleService";
 import Messages from "../components/common/messages";
+import ApiClientService from "../app/service/ApiClientService";
 
-const newModule = { name: '' , label: '' }
+const newModule = { 
+    id: null,
+    name: '' , 
+    label: '' 
+}
 
 class ModuleStore {
     
     service = new ModuleService();
-    list = []
-    module = newModule
+    list = [];
+    module = newModule;
 
     init = () => {
         this.setList([])
         this.setModule(newModule)
     }
 
-    setName = (name) => {
-        this.setModule({...this.module, name})
-    }
-
-    setLabel = (label) => {
-        this.setModule({...this.module, label})
+    onChange = (event) => {
+        const { name, value } = event.target
+        this.setModule({...this.module, [name]: value})
     }
 
     setModule = (newEntity) => {
@@ -31,13 +33,34 @@ class ModuleStore {
         this.list = newList;
     }
 
-    save = async (module) => {
+    load = async (id) => {
+        if(!id){
+            this.init();
+        }else{
+            try{
+                const {data} = await this.service.findById(id)
+                this.setModule(data)
+            }catch(error){
+                ApiClientService.handleError(error)
+            }
+        }
+    }
+
+    submit = () => {
+        if(this.module.id){
+            this.update();
+        }else{
+            this.save();
+        }
+    }
+
+    save = async () => {
         try{
-            const { data } = await this.service.save(module)
+            const { data } = await this.service.save(this.module)
             this.setModule(data)
             Messages.success('Module saved succesfully!')
         }catch(error){
-            this.service.handleError(error)
+            ApiClientService.handleError(error)
         }
     }
 
@@ -46,7 +69,7 @@ class ModuleStore {
             await this.service.delete(id)
             Messages.success('Module deleted succesfully!')
         }catch(error){
-            this.service.handleError(error)
+            ApiClientService.handleError(error)
         }
     }
 
@@ -55,16 +78,16 @@ class ModuleStore {
             const {data} = await this.service.findById(id)
             this.setModule(data)
         }catch(error){
-            this.service.handleError(error)
+            ApiClientService.handleError(error)
         }
     }
 
-    update = async (module) => {
+    update = async () => {
         try{
-            await this.service.update(module)
+            await this.service.update(this.module)
             Messages.success('Module updated succesfully!')
         }catch(error){
-            this.service.handleError(error)
+            ApiClientService.handleError(error)
         }
     }
 
@@ -76,7 +99,7 @@ class ModuleStore {
                 Messages.warn('No result found')
             }
         }catch(error){
-            this.service..handleError(error)
+            ApiClientService.handleError(error)
         }
     }
 }

@@ -17,7 +17,7 @@ class Header extends React.Component{
                     </span>
                 </a>
                 <nav className="navbar navbar-static-top">
-                    <a href className="sidebar-toggle" data-toggle="offcanvas"></a>
+                    <a href="#" className="sidebar-toggle" data-toggle="offcanvas"></a>
                     <div className="navbar-custom-menu">
                         <ul className="nav navbar-nav">
                             <li className="dropdown messages-menu">

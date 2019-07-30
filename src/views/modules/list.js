@@ -5,8 +5,9 @@ import { DataTable } from 'primereact/datatable'
 import {Column} from 'primereact/column';
 import FormGroup from '../../components/common/formGroup';
 import Row from '../../components/common/row';
+import { withRouter } from 'react-router-dom'
 
-function ModuleList({ modules }){
+function ModuleList({ modules, history }){
 
     const [name, setName] = useState('')
 
@@ -17,6 +18,10 @@ function ModuleList({ modules }){
     const executeFind = (e) => {
         e.preventDefault();
         modules.find(name)
+    }
+
+    const prepareForm = (id) => {
+        history.push(`/views/module-form/${id}`)
     }
 
     return(
@@ -30,9 +35,12 @@ function ModuleList({ modules }){
                     </FormGroup>
                 </Row>
                 <Row>
-                    <div className="col-md-2">  
+                    <div className="col-md-12">  
                         <button type="button" className="btn btn-default" onClick={executeFind}>
                             <i className="fa fa-search"></i>    Search
+                        </button>
+                        <button type="button" className="btn btn-warning" onClick={e => prepareForm()}>
+                            <i className="fa fa-plus"></i>    Add New
                         </button>
                     </div>
                 </Row>
@@ -54,4 +62,6 @@ function ModuleList({ modules }){
     )
 }
 
-export default inject("modules")((observer(ModuleList)))
+ModuleList = withRouter(ModuleList)
+
+export default inject("modules")((observer(ModuleList))) 
