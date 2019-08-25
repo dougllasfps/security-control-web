@@ -18,10 +18,10 @@ const Rotas = () => (
     <div className="content-wrapper">
         <HashRouter>
             <Switch>
-                <Route path="/" exact component={() => <Home />} />
-                <Route path="/login" exact component={() => <Login />} />
-                <Route path="/views/modules" exact component={() => <ModuleList />} />
-                <Route path="/views/module-form/:id?" exact component={() => <ModuleForm />} />
+                <Route path="/" exact component={Home} />
+                <Route path="/login" component={Login} />
+                <Route path="/views/modules" component={ModuleList} />
+                <Route path="/views/module-form/:id?" component={ModuleForm} />
             </Switch>
         </HashRouter>
     </div>
