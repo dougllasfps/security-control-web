@@ -8,7 +8,7 @@
     "font-awesome": "4.7.0",
     "ionicons": "^3.0.0",
     "jest": "23.6.0",
-    "jquery": "2.2.3",
+    "jquery": "3.5.0",
     "mobx": "5.10.1",
     "mobx-react": "^6.1.1",
     "primereact": "^3.0.0-rc.1",
